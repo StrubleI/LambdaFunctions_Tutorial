@@ -32,9 +32,36 @@ Modern Alternative to Function Pointers: Lambdas simplify code while maintaining
 
 Customizable Algorithms: Replace function pointers in algorithms like std::for_each.
 
+> [!WARNING]  
+> Overusing lambdas can make code harder to debug or read, especially with complex capture lists.
+
+## 🚀 Example: Using Lambdas in Place of Function Pointers
+Here’s how lambda functions can replace function pointers in practical use cases.
 
 ```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
 
+int main() {
+    // Sample vector
+    std::vector<int> values = {1, 2, 3, 4, 5};
+
+    // Lambda function to print values
+    auto print = [](int value) { std::cout << "Value: " << value << std::endl; };
+
+    // Applying the lambda with a modern algorithm
+    std::for_each(values.begin(), values.end(), print);
+
+    // Inline lambda for summing values
+    int sum = 0;
+    std::for_each(values.begin(), values.end(), [&sum](int value) {
+        sum += value;
+    });
+    std::cout << "Sum: " << sum << std::endl;
+
+    return 0;
+}
 ```
 
 
