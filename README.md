@@ -53,15 +53,19 @@ int main() {
     // Applying the lambda with a modern algorithm
     std::for_each(values.begin(), values.end(), print);
 
-    // Inline lambda for summing values
+    // Declare sum as a local variable
     int sum = 0;
+
+    // Inline lambda for summing values
     std::for_each(values.begin(), values.end(), [&sum](int value) {
         sum += value;
     });
+
     std::cout << "Sum: " << sum << std::endl;
 
     return 0;
 }
+
 ```
 
 # 🔍 Advanced Concepts
