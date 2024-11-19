@@ -64,17 +64,56 @@ int main() {
 }
 ```
 
+# 🔍 Advanced Concepts
+
+## 🌟 Capture by Value vs. Reference
+Capture by Value [=]: Copies the outer variables into the lambda's scope.
+Capture by Reference [&]: Refers to the original variables, modifying them if needed.
 
 ```cpp
-
+int x = 10;
+auto byValue = [x]() { return x + 5; }; // x is copied
+auto byRef = [&x]() { return x += 5; }; // x is modified
 ```
 
+## 🔧 Stateless Lambdas
+
+If a lambda does not capture any variables, it is stateless and can convert to a function pointer.
 
 ```cpp
-
+auto stateless = [](int x) { return x * x; };
+int(*functionPointer)(int) = stateless; // Valid!
 ```
+## 🔥 Output Explanation
 
+When you run the program:
+
+Printing values with std::for_each:
 
 ```cpp
-
+Value: 1
+Value: 2
+Value: 3
+Value: 4
+Value: 5
 ```
+Sum calculation:
+
+```cpp
+Sum: 15
+```
+
+# 📝 Tips for Mastering Lambdas
+
+> [!WARNING]
+> Be cautious with capture by reference when dealing with variables that might go out of scope.
+
+> [!NOTE]
+> In C++20, lambdas can be constexpr, allowing them to run at compile time:
+
+```cpp
+constexpr auto square = [](int x) { return x * x; };
+static_assert(square(5) == 25);
+```
+
+# Happy coding! 🚀
